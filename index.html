@@ -10,21 +10,57 @@
 
 		<button type=button onclick="traditionalPomodoroStart()">Traditional</button>
         <br><br>
-        <button type=button>Custom</button>
+        <button type=button onclick="showNewForm()">Custom</button>
 		
+        
+        <div class="new-form">
+            <br>
+            <form action="#" onsubmit="newSubmit(document.getElementById('customTime').value)" >
+            <label for="customTime">Working time:</label>
+            <input id="customTime" type="number" type="submit" min="1" max="100" />
+            <br>
+            <br>    
+            <form action="#" onsubmit="newSubmit(document.getElementById('customRestTime').value)" >
+            <label for="customRestTime">Rest time:</label>
+            <input id="customRestTime" type="number" type="submit" min="1" max="100" />
+            <br>
+            <br>
+            <form action="#" onsubmit="newSubmit(document.getElementById('customRepeat').value)" >
+            <label for="customRepeat">Repeats:</label>
+            <input id="customRepeat" type="number" type="submit" min="1" max="20" />
+            <br>
+                
+            <button type=button onclick="startCustomPomodoro()">Start</button>
+        </div>
+        
+        
         <h3 id="status"></h3>
         <div id="traditional">
 		<script>
             function traditionalPomodoroStart(){
+                $(".new-form").hide();
                 alert("button pressed");
                 workOrRestMsg(true, "status");
                 countDown(1500, "traditional");
-            }</script>
+            }
+            
+            function showNewForm(){
+                $(".new-form").show();
+            }
+            
+            function startCustomPomodoro(){
+                $(".new-form").hide();
+                var workTime;
+                var restTime;
+                var repeats;
+            }
+            </script>
         </div>
         
         
         <script>
             $(document).ready(function(){ 
+                $(".new-form").hide();
             });
         
         </script>
