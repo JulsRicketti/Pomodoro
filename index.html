@@ -8,9 +8,26 @@
 	</head>
 	<body>
 
+		<button type=button onclick="traditionalPomodoroStart()">Traditional</button>
+        <br><br>
+        <button type=button>Custom</button>
 		
-		<div id="countdown"></div>
-		<script>countDown(380, "countdown");</script>
+        <h3 id="status"></h3>
+        <div id="traditional">
+		<script>
+            function traditionalPomodoroStart(){
+                alert("button pressed");
+                workOrRestMsg(true, "status");
+                countDown(1500, "traditional");
+            }</script>
+        </div>
+        
+        
+        <script>
+            $(document).ready(function(){ 
+            });
+        
+        </script>
 
 
 	</body>

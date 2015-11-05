@@ -1,16 +1,26 @@
+function workOrRestMsg(isWorkTime, elem){
+	var element = document.getElementById(elem);
+    if(isWorkTime)
+        element.innerHTML= "Work time!";
+    else
+        element.innerHTML = "Rest time!";
+
+}
+
 function countDown(seconds, elem){
 	var element = document.getElementById(elem);
 	var minutes=0;
 	var totalSeconds=0;
-	if(seconds<=60){
+    	
+    if(seconds<=60){
 
-		element.innerHTML = "Please wait for "+seconds + " seconds";
+		element.innerHTML = "Time remaining: "+seconds + " seconds";
 	}
 	else{
 		var minutes = Math.floor(seconds/60);
 		seconds= seconds -(minutes*60);
 		
-		element.innerHTML = "Please wait for "+minutes+ " minutes and "+seconds+ " seconds";
+		element.innerHTML = "Time remaining: "+minutes+ " minutes and "+seconds+ " seconds";
 	}
 	
 	seconds--;
