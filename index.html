@@ -15,31 +15,57 @@
         
         <div class="new-form">
             <br>
-            <form action="#" onsubmit="newSubmit(document.getElementById('customTime').value)" >
-            <label for="customTime">Working time:</label>
-            <input id="customTime" type="number" type="submit" min="1" max="100" />
-            <br>
-            <br>    
-            <form action="#" onsubmit="newSubmit(document.getElementById('customRestTime').value)" >
-            <label for="customRestTime">Rest time:</label>
-            <input id="customRestTime" type="number" type="submit" min="1" max="100" />
-            <br>
-            <br>
-            <form action="#" onsubmit="newSubmit(document.getElementById('customRepeat').value)" >
-            <label for="customRepeat">Repeats:</label>
-            <input id="customRepeat" type="number" type="submit" min="1" max="20" />
-            <br>
+            <form id="customForm" action="#" onsubmit="setCustomTime(document.getElementById('customTime').value)" >
+                <label for="customTime">Working time:</label>
+                <input id="customTime" type="number" min="1" max="100" value="25" />
+                </form>
+                <br>
+                <br>
+            
+                <label for="customRestTime">Rest time:</label>
+                <input id="customRestTime" type="number" min="1" max="100" value="15" />
+                </form>    
+                <br>
+                <br>
+            
+                <label for="customRepeat">Repeats:</label>
+                <input id="customRepeat" type="number" min="1" max="20" value="4"/>
+                <br>
+                <br>   
                 
-            <button type=button onclick="startCustomPomodoro()">Start</button>
+                <label for="customLongRestTime">Long rest time:</label>
+                <input id="customLongRestTime" type="number" min="1" max="20" value="4"/>
+                <br>
+                <br>   
+                <button type=button onclick="startCustomPomodoro()">Start</button>
+        </form>
+
         </div>
         
         
         <h3 id="status"></h3>
         <div id="traditional">
 		<script>
+            var workTime = 25;
+            var restTime = 15;
+            var repeats =4;
+            var longRestTime =30;
+            function setCustomTime(setWorkTime){
+
+                workTime = setWorkTime;
+                alert(workTime);
+            }
+            
+            function setCutomRestTime(setRestTime){
+                restTime = setRestTime;
+            }
+            
+            function setCustomRepeat(setRepeatTime){
+                repeats = setRepeatTime;
+            }
+            
             function traditionalPomodoroStart(){
                 $(".new-form").hide();
-                alert("button pressed");
                 workOrRestMsg(true, "status");
                 countDown(1500, "traditional");
             }
@@ -50,9 +76,12 @@
             
             function startCustomPomodoro(){
                 $(".new-form").hide();
-                var workTime;
-                var restTime;
-                var repeats;
+                workTime = document.getElementById('customTime').value;
+                restTime=document.getElementById('customRestTime').value;
+                repeats=document.getElementById('customRepeat').value;
+                longRestTime =document.getElementById('customLongRestTime').value;
+                workOrRestMsg(true, "status");
+                countDown(workTime*60, "traditional");
             }
             </script>
         </div>
@@ -61,6 +90,7 @@
         <script>
             $(document).ready(function(){ 
                 $(".new-form").hide();
+                
             });
         
         </script>
